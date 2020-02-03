@@ -832,6 +832,20 @@ RUN if [ ${INSTALL_FFMPEG} = true ]; then \
     apt-get -y install ffmpeg \
 ;fi
 
+#####################################
+# wkhtmltopdf:
+#####################################
+
+USER root
+
+ARG INSTALL_WKHTMLTOPDF=false
+
+RUN if [ ${INSTALL_WKHTMLTOPDF} = true ]; then \
+  apt-get install -y xvfb libfontconfig wkhtmltopdf && \
+  echo 'exec xvfb-run -a -s "-screen 0 640x480x16" wkhtmltopdf "$@"' | tee /usr/local/bin/wkhtmltopdf.sh >/dev/null && \
+  chmod a+x /usr/local/bin/wkhtmltopdf.sh \
+;fi
+
 ###########################################################################
 # Mailparse extension:
 ###########################################################################

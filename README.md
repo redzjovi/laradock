@@ -236,3 +236,12 @@ For more info contact <a href = "mailto: support@laradock.io">support@laradock.i
 ## License
 
 [MIT License](https://github.com/laradock/laradock/blob/master/LICENSE)
+
+docker-compose build --no-cache php-fpm
+docker-compose down
+docker-compose down && docker-compose up -d adminer mysql nginx php-fpm workspace
+docker-compose down && docker-compose up -d adminer mongo mysql nginx php-fpm redis workspace
+docker-compose down && docker-compose up -d adminer mongo mysql nginx php-fpm rabbitmq redis workspace
+docker-compose down && docker-compose up -d adminer elasticsearch kibana mongo mongo-webui mysql nginx php-fpm portainer rabbitmq redis workspace
+docker inspect [CONTAINER ID]
+docker ps
